@@ -1,7 +1,7 @@
 let res
   function shorturl() {
     if(document.querySelector("#text").value==""){
-        alert("無法縮短網址：（")
+        alert("Url cannot be empty!")
         return
     }
 
@@ -17,14 +17,14 @@ let res
   .then(function(myJson) {
     res = myJson;
     document.getElementById("searchbtn").disabled=false;
-	document.getElementById("searchbtn").innerHTML='縮短網址';
+	document.getElementById("searchbtn").innerHTML=' Shorten it';
     if(res.key!=="")
     document.getElementById("result").innerHTML=window.location.origin+res.key;
     $('#exampleModal').modal('show')
   }).catch(function(err){alert("未知的錯誤，請重新嘗試");
   console.log(err);
   document.getElementById("searchbtn").disabled=false;
-	document.getElementById("searchbtn").innerHTML='縮短網址';})
+	document.getElementById("searchbtn").innerHTML=' Shorten it';})
   }
   function copyurl (id, attr) {
     let target = null;
@@ -49,7 +49,7 @@ let res
         range.selectNode(target);
         window.getSelection().removeAllRanges();
         window.getSelection().addRange(range);
-        document.execCommand('複製');
+        document.execCommand('copy');
         window.getSelection().removeAllRanges();
         console.log('複製成功')
     } catch (e) {
